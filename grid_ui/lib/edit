@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: GridUi(),
+  ));
+}
+
+class GridUi extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GridView(
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        children: [
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+          Card(
+            color: Colors.yellow,
+            child: Icon(Icons.account_balance),
+          ),
+        ],
+      ),
+    );
+  }
+}
