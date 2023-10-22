@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'mainPage.dart';
+
 class PlayLists extends StatelessWidget {
   var playlists = [
     "https://charts-images.scdn.co/assets/locale_en/regional/daily/region_global_default.jpg",
@@ -18,26 +20,27 @@ class PlayLists extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        // physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: 12,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          // mainAxisSpacing: 15,
-          // crossAxisSpacing: 15,
-        ),
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(playlists[index]))),
-            ),
-          );
-        });
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: const CustomAppBar(),
+      body: GridView.builder(
+          shrinkWrap: true,
+          itemCount: 12,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+          ),
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(playlists[index]))),
+              ),
+            );
+          }),
+    );
   }
 }

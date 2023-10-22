@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: const CustomAppBar(),
+      // appBar: const CustomAppBar(),
       bottomNavigationBar: SlidingClippedNavBar(
         barItems: [
           BarItem(title: 'Home', icon: Icons.home),
@@ -114,25 +114,3 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
-
-// class CustomNavBar extends StatelessWidget {
-//   const CustomNavBar({
-//     Key? key,
-//   }) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SlidingClippedNavBar(
-//       barItems: [
-//         BarItem(title: 'Home', icon: Icons.home),
-//         BarItem(title: 'Search', icon: Icons.search),
-//         BarItem(title: 'Playlists', icon: Icons.playlist_add_check_rounded),
-//         BarItem(title: 'More', icon: Icons.more_horiz_rounded)
-//       ],
-//       activeColor: Colors.pink.shade200,
-//       inactiveColor: Colors.white,
-//       backgroundColor: Colors.black,
-//       iconSize: 30,selectedIndex: ,
-//     );
-//   }
-// }
