@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AppBar1 extends StatefulWidget {
+class CustomAppBar extends StatefulWidget {
   @override
-  State<AppBar1> createState() => _AppBar1State();
+  State<CustomAppBar> createState() => _CustomAppBarState();
 }
 
-class _AppBar1State extends State<AppBar1> {
+class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -15,28 +15,34 @@ class _AppBar1State extends State<AppBar1> {
         'FARMERS FRESH ZONE',
         style: GoogleFonts.lilitaOne(),
       ),
-      actions: const [
-        Icon(
-          Icons.location_on_outlined,
-          size: 20,
+      actions: [
+        Row(
+          children: [
+            Icon(
+              Icons.location_on_outlined,
+              size: 20,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 5),
+              child: Text('Kochi'),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 8.0),
+              child: Icon(
+                Icons.keyboard_arrow_down,
+                size: 15,
+              ),
+            ),
+          ],
         ),
-        Padding(
-          padding: EdgeInsets.only(left: 5),
-          child: Center(child: Text('Kochi')),
-        ),
-        Padding(
-          padding: EdgeInsets.only(right: 8.0),
-          child: Icon(
-            Icons.keyboard_arrow_down,
-            size: 15,
-          ),
-        )
       ],
       bottom: AppBar(
         elevation: 0,
         title: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(7), color: Colors.white),
+            borderRadius: BorderRadius.circular(7),
+            color: Colors.white,
+          ),
           height: 35,
           width: double.infinity,
           child: Center(
@@ -45,11 +51,11 @@ class _AppBar1State extends State<AppBar1> {
                 border: InputBorder.none,
                 hintText: 'Search for Vegetables, Fruits...',
                 hintStyle: GoogleFonts.notoSans(fontSize: 12),
-                prefixIcon: const Icon(
+                prefixIcon: Icon(
                   Icons.search,
                   size: 18,
                 ),
-                contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                contentPadding: EdgeInsets.symmetric(vertical: 10),
                 isDense: true,
               ),
             ),

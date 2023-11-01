@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Filter_List extends StatelessWidget {
+class FilterList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverList(

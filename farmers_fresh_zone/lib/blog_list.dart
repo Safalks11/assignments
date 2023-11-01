@@ -12,6 +12,8 @@ class BlogList extends StatelessWidget {
     'Control Blood Pressure,the ri..',
     'Five tips that prevent you fro..'
   ];
+
+  BlogList({super.key});
   @override
   Widget build(BuildContext context) {
     return SliverList(
@@ -32,34 +34,33 @@ class BlogList extends StatelessWidget {
                 blogs.length,
                 (index) => Card(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         height: MediaQuery.of(context).size.width / 4,
-                        width: MediaQuery.of(context).size.width * 2,
+                        width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
                           image: DecorationImage(
                             image: NetworkImage(blogs[index]),
-                            fit: BoxFit.contain,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              posts[index],
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 11),
-                            ),
-                          ],
+                        child: Text(
+                          posts[index],
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 11,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
                         child: Row(
                           children: [
                             Text(
@@ -80,18 +81,19 @@ class BlogList extends StatelessWidget {
                 ),
               ),
               options: CarouselOptions(
-                  enableInfiniteScroll: false,
-                  autoPlay: false,
-                  viewportFraction: 0.4,
-                  height: 300,
-                  padEnds: false),
+                enableInfiniteScroll: false,
+                autoPlay: false,
+                viewportFraction: 0.4,
+                height: 300,
+                padEnds: false,
+              ),
             ),
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   'VIEW MORE',
                   style: TextStyle(

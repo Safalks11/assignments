@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tourism_app_project/screens/3login.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Login_Signup(),
-  ));
-}
-
-class Login_Signup extends StatelessWidget {
-  const Login_Signup({super.key});
+class LoginSignup extends StatelessWidget {
+  const LoginSignup({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +12,7 @@ class Login_Signup extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
             Image.asset(
@@ -25,29 +20,30 @@ class Login_Signup extends StatelessWidget {
               height: 200,
               width: 200,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
-                width: 250,
-                height: 30,
+                width: 270,
+                height: 35,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
-                  onPressed: () {},
-                  child: Row(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const LoginShared()));
+                  },
+                  child: const Row(
                     children: [
                       Text('Login here'),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 132),
-                        child: FaIcon(
-                          FontAwesomeIcons.user,
-                          size: 15,
-                        ),
+                      Spacer(),
+                      FaIcon(
+                        FontAwesomeIcons.user,
+                        size: 15,
                       )
                     ],
                   ),
@@ -57,23 +53,21 @@ class Login_Signup extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
-                width: 250,
-                height: 30,
+                width: 270,
+                height: 35,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[700],
+                      backgroundColor: Colors.blue[800],
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
                   onPressed: () {},
-                  child: Row(
+                  child: const Row(
                     children: [
                       Text('Login with Facebook'),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 68),
-                        child: FaIcon(
-                          FontAwesomeIcons.facebook,
-                          size: 15,
-                        ),
+                      Spacer(),
+                      FaIcon(
+                        FontAwesomeIcons.facebook,
+                        size: 15,
                       )
                     ],
                   ),
@@ -83,30 +77,28 @@ class Login_Signup extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
-                width: 250,
-                height: 30,
+                width: 270,
+                height: 35,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: Colors.red[700],
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
                   onPressed: () {},
-                  child: Row(
+                  child: const Row(
                     children: [
                       Text('Login with Google'),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 85),
-                        child: FaIcon(
-                          FontAwesomeIcons.google,
-                          size: 15,
-                        ),
+                      Spacer(),
+                      FaIcon(
+                        FontAwesomeIcons.google,
+                        size: 15,
                       )
                     ],
                   ),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
           ],

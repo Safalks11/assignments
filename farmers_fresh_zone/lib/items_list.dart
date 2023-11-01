@@ -87,6 +87,7 @@ class _ItemsListState extends State<ItemsList> {
             ),
           ),
           GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.all(8),
             shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -94,71 +95,87 @@ class _ItemsListState extends State<ItemsList> {
             itemCount: items.length,
             itemBuilder: (BuildContext, int index) {
               return Card(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.width / 4,
-                      width: MediaQuery.of(context).size.width * 2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        image: DecorationImage(
-                          image: AssetImage(items[index]),
-                          fit: BoxFit.contain,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 12.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.width / 4,
+                        width: MediaQuery.of(context).size.width * 2,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          image: DecorationImage(
+                            image: AssetImage(items[index]),
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        names[index],
-                        style: const TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            names[index],
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            price[index],
-                            style: const TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.bold),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              price[index],
+                              style: const TextStyle(
+                                  fontSize: 13, fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
-                        const Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 9.0),
-                          child: Text(
-                            offer[index],
-                            style: const TextStyle(
-                                color: Colors.redAccent,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10),
+                          const Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 9.0),
+                            child: Text(
+                              offer[index],
+                              style: const TextStyle(
+                                  color: Colors.redAccent,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10),
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              quantity[index],
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 13),
+                            ),
                           ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            quantity[index],
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 13),
-                          ),
-                        ),
-                        const Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10, top: 8),
-                          child: ElevatedButton(
-                              onPressed: () {}, child: const Text('ADD')),
-                        )
-                      ],
-                    )
-                  ],
+                          const Spacer(),
+                          Padding(
+                              padding: const EdgeInsets.only(right: 10, top: 8),
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 20,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(3)),
+                                child: Text(
+                                  'ADD',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 10),
+                                ),
+                              ))
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               );
             },
