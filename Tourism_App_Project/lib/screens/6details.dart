@@ -14,8 +14,8 @@ class DetailsPage extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          SizedBox(height: 35),
-          Container(
+          const SizedBox(height: 35),
+          SizedBox(
             height: 90,
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -32,7 +32,7 @@ class DetailsPage extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 detail['name'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
@@ -68,7 +68,7 @@ class DetailsPage extends StatelessWidget {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: Text(
                                 '${detail['rating']} Rating',
-                                style: TextStyle(fontSize: 12),
+                                style: const TextStyle(fontSize: 12),
                               ),
                             ),
                           ],
@@ -76,7 +76,7 @@ class DetailsPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  VerticalDivider(
+                  const VerticalDivider(
                     color: Colors.black,
                     width: 1.5, // Adjust the width of the divider
                     indent: 10,
@@ -96,20 +96,20 @@ class DetailsPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 40,
                   )
                 ],
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 35,
           ),
-          Row(
+          const Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+                padding: EdgeInsets.only(left: 10.0),
                 child: Text(
                   'About Places',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -131,13 +131,13 @@ class DetailsPage extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Row(
+          const Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+                padding: EdgeInsets.only(left: 10.0),
                 child: Text(
                   'Special Facilities',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -145,7 +145,7 @@ class DetailsPage extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Padding(
@@ -230,13 +230,13 @@ class DetailsPage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 14,
           ),
-          Row(
+          const Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+                padding: EdgeInsets.only(left: 10.0),
                 child: Text(
                   'Accomodation',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -244,7 +244,7 @@ class DetailsPage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Row(
@@ -258,7 +258,7 @@ class DetailsPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey),
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [Text('Adult'), Text('02')],
                     ),
@@ -273,7 +273,7 @@ class DetailsPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey),
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [Text('Adult'), Text('02')],
                     ),
@@ -288,7 +288,7 @@ class DetailsPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey),
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [Text('Adult'), Text('02')],
                     ),
@@ -297,13 +297,13 @@ class DetailsPage extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                 width: 350,
                 child: ElevatedButton(
                   onPressed: () {
@@ -311,7 +311,7 @@ class DetailsPage extends StatelessWidget {
                         builder: (context) =>
                             ExplorePage(image: detail['image'])));
                   },
-                  child: Text('Explore Now'),
+                  child: const Text('Explore Now'),
                 ),
               )
             ],

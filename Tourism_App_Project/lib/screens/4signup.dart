@@ -23,8 +23,8 @@ class _LoginPageState extends State<SignupPage> {
       int id = await SQLHelper.AddNewUser(name, email, password);
       if (id != null) {
         /// if registration is success goto login page
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const LoginPage()));
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Registration not Successful')));
@@ -33,7 +33,7 @@ class _LoginPageState extends State<SignupPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Signup Page'),
+        title: const Text('Signup Page'),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -61,8 +61,9 @@ class _LoginPageState extends State<SignupPage> {
                   validator: (username) {
                     if (username!.isEmpty) {
                       return "Name is required";
-                    } else
+                    } else {
                       return null;
+                    }
                   },
                   textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
@@ -81,8 +82,9 @@ class _LoginPageState extends State<SignupPage> {
                         !email.contains("@") ||
                         !email.contains(".")) {
                       return "Enter valid email";
-                    } else
+                    } else {
                       return null;
+                    }
                   },
                   textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
@@ -178,7 +180,7 @@ class _LoginPageState extends State<SignupPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginPage()));
+                                builder: (context) => const LoginPage()));
                       },
                       child: const Text(
                         "Login!!",

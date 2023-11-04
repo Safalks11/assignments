@@ -18,7 +18,7 @@ class ExplorePage extends StatelessWidget {
           Container(
             height: 300,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(15),
                     bottomRight: Radius.circular(15)),
                 image: DecorationImage(
@@ -26,9 +26,11 @@ class ExplorePage extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
+                  bottom: 20,
+                  left: 20,
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "Crown Plaza\nKochi,Kerala",
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -36,7 +38,7 @@ class ExplorePage extends StatelessWidget {
                             fontSize: 18,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
@@ -45,7 +47,7 @@ class ExplorePage extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.grey,
                             borderRadius: BorderRadius.circular(20)),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             "8.4/85 reviews",
                             style: TextStyle(color: Colors.white),
@@ -54,10 +56,8 @@ class ExplorePage extends StatelessWidget {
                       )
                     ],
                   ),
-                  bottom: 20,
-                  left: 20,
                 ),
-                Positioned(
+                const Positioned(
                   child: Icon(
                     Icons.favorite_border,
                     size: 30,
@@ -89,9 +89,9 @@ class ExplorePage extends StatelessWidget {
                   Icons.star,
                   color: Colors.yellow[700],
                 ),
-                Icon(Icons.star_border_outlined),
-                Spacer(),
-                Text(
+                const Icon(Icons.star_border_outlined),
+                const Spacer(),
+                const Text(
                   "\$200",
                   style: TextStyle(fontSize: 20, color: Colors.blue),
                 )
@@ -102,12 +102,12 @@ class ExplorePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 13.0, vertical: 4),
             child: Row(
               children: [
-                Icon(Icons.location_on_outlined),
+                const Icon(Icons.location_on_outlined),
                 Text(
                   "3km from Lulu Mall",
                   style: TextStyle(color: Colors.grey[800], fontSize: 15),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   "/per night",
                   style: TextStyle(color: Colors.grey[800], fontSize: 15),
@@ -115,7 +115,7 @@ class ExplorePage extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Padding(
@@ -125,7 +125,7 @@ class ExplorePage extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => BookingPage()));
               },
-              child: Text(
+              child: const Text(
                 "Book Now",
                 style: TextStyle(fontSize: 20),
               ),
@@ -133,13 +133,13 @@ class ExplorePage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25.0),
                   ),
-                  fixedSize: Size.fromHeight(45)),
+                  fixedSize: const Size.fromHeight(45)),
             ),
           ),
-          Divider(),
+          const Divider(),
 
-          Padding(
-            padding: const EdgeInsets.all(12.0),
+          const Padding(
+            padding: EdgeInsets.all(12.0),
             child: Text(
               "Kochi",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -153,7 +153,7 @@ class ExplorePage extends StatelessWidget {
                   child: Text(
                     detail['description'],
                     softWrap: true,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 )
               ],

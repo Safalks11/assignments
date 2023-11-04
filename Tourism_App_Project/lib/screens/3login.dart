@@ -5,7 +5,7 @@ import 'package:tourism_app_project/screens/5home.dart';
 import '../db/sql_functions.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: LoginPage(),
   ));
 }
@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Login Page'),
+          title: const Text('Login Page'),
         ),
         body: SingleChildScrollView(
           child: Form(
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                               uname_controller.text, pass_controller.text);
                         } else {}
                       },
-                      child: Text(
+                      child: const Text(
                         "Login",
                         style: TextStyle(color: Colors.black),
                       )),
@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SignupPage()));
+                                    builder: (context) => const SignupPage()));
                           },
                           child: const Text(
                             "Signup!!",
@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
           action: SnackBarAction(label: 'UNDO', onPressed: () {}),
           content: const Text('Invalid username / password')));
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => SignupPage()));
+          context, MaterialPageRoute(builder: (context) => const SignupPage()));
       print("Login Failed");
     }
   }

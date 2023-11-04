@@ -5,7 +5,7 @@ import '6details.dart'; // Ensure you import your login_signup file correctly.
 
 void main() {
   runApp(MaterialApp(
-      home: IntroScreen(),
+      home: const IntroScreen(),
       debugShowCheckedModeBanner: false,
       routes: {'details': (context) => DetailsPage()}));
 }

@@ -6,22 +6,30 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
-class BookingPage extends StatelessWidget {
-  BookingPage({super.key});
+class BookingPage extends StatefulWidget {
+  const BookingPage({super.key});
+
+  @override
+  State<BookingPage> createState() => _BookingPageState();
+}
+
+class _BookingPageState extends State<BookingPage> {
   final List<String> paymentMethods = [
     "Google Pay",
     "Paypal",
     "Credit Card",
   ];
+
   var animations = [
     "https://lottie.host/654024d9-7ef3-4f4e-8eb8-d7dfb4cc6c08/mTcAIeCrzl.json",
     "https://lottie.host/b554c898-cfdd-4445-aba2-499c088f100e/mSs36lfYc0.json",
     "https://lottie.host/dde36fcd-b140-4030-88cf-1903aaf2b28f/8qOdBvXcaV.json"
   ];
+
   var icons = [
-    FaIcon(FontAwesomeIcons.googlePay, size: 30),
-    FaIcon(FontAwesomeIcons.paypal, size: 30),
-    FaIcon(FontAwesomeIcons.creditCard, size: 25)
+    const FaIcon(FontAwesomeIcons.googlePay, size: 30),
+    const FaIcon(FontAwesomeIcons.paypal, size: 30),
+    const FaIcon(FontAwesomeIcons.creditCard, size: 25)
   ];
 
   @override
@@ -29,12 +37,12 @@ class BookingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        title: Text("Payment"),
+        title: const Text("Payment"),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -45,7 +53,8 @@ class BookingPage extends StatelessWidget {
                     height: 250,
                     width: 400,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20)),
                         color: Colors.orange[800]),
                   ),
                   Positioned(
@@ -134,8 +143,8 @@ class BookingPage extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
+            const Padding(
+              padding: EdgeInsets.all(15.0),
               child: Row(
                 children: [
                   Text(
@@ -159,7 +168,7 @@ class BookingPage extends StatelessWidget {
                       child: icons[index]), // You can change the icon as needed
                   title: Text(
                     paymentMethods[index],
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   trailing: ElevatedButton(
                     onPressed: () {
@@ -182,30 +191,30 @@ class BookingPage extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text("Close"),
+                                child: const Text("Close"),
                               ),
                             ],
                           );
                         },
                       );
                     },
-                    child: Text("Pay Now"),
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStatePropertyAll(Colors.green[700]),
                     ),
+                    child: const Text("Pay Now"),
                   ),
                 );
               },
             ),
-            Divider(
+            const Divider(
               thickness: 1.1,
               color: Colors.black,
             ),
-            Row(
+            const Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.0),
                   child: Text(
                     "Pay with UPI id",
                     style: TextStyle(
@@ -216,10 +225,10 @@ class BookingPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            SizedBox(
+            const SizedBox(
               width: 350,
               height: 65,
               child: TextField(

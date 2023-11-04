@@ -49,11 +49,12 @@ class _HomeSharedState extends State<HomeShared> {
                 ),
                 GridView.builder(
                     shrinkWrap: true,
-                    padding: EdgeInsets.all(5),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 10),
+                    padding: const EdgeInsets.all(5),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 10),
                     itemCount: images.length,
                     itemBuilder: (context, int index) {
                       return GestureDetector(
@@ -83,7 +84,7 @@ class _HomeSharedState extends State<HomeShared> {
                                   child: Center(
                                       child: Text(
                                     number[index],
-                                    style: TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.white),
                                   )),
                                 ),
                               ),
@@ -92,7 +93,7 @@ class _HomeSharedState extends State<HomeShared> {
                                   left: 10,
                                   child: Text(
                                     title[index],
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         letterSpacing: 1,
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -149,7 +150,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           color: Colors.grey[300],
           height: 45,
           width: double.infinity,
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Search",
