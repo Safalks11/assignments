@@ -1,128 +1,137 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tourism_app_project/screens/4signup.dart';
 import 'package:tourism_app_project/screens/5home.dart';
 
-// void main() {
-//   runApp(MaterialApp(
-//     home: LoginShared(),
-//   ));
-// }
+import '../db/sql_functions.dart';
 
-class LoginShared extends StatefulWidget {
-  const LoginShared({Key? key}) : super(key: key);
-
-  @override
-  _LoginSharedState createState() => _LoginSharedState();
+void main() {
+  runApp(MaterialApp(
+    home: LoginPage(),
+  ));
 }
 
-class _LoginSharedState extends State<LoginShared> {
-  final userName = TextEditingController();
-  final passWord = TextEditingController();
-  bool newUser = true; // Assume the user is new until proven otherwise
-  late SharedPreferences prefs;
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  void initState() {
-    super.initState();
-    checkUserAlreadyLogin();
-  }
+  State<LoginPage> createState() => _LoginPageState();
+}
 
-  void checkUserAlreadyLogin() async {
-    prefs = await SharedPreferences.getInstance();
-    newUser = prefs.getBool('firstlogin') ?? true;
-
-    if (!newUser) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeShared()),
-      );
-    }
-  }
-
+class _LoginPageState extends State<LoginPage> {
+  var formkey = GlobalKey<FormState>();
+  final uname_controller = TextEditingController();
+  final pass_controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Login Page"),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: userName,
-              decoration: const InputDecoration(
-                labelText: "UserName",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: passWord,
-              decoration: const InputDecoration(
-                labelText: "Password",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: validateAndLogin,
-              child: const Text("Login"),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const RegistrationPage()));
-                },
-                child: const Text('Go to Registration Page'),
-              ),
-            ),
-          ],
+        appBar: AppBar(
+          title: Text('Login Page'),
         ),
-      ),
-    );
+        body: SingleChildScrollView(
+          child: Form(
+              key: formkey,
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 100.0),
+                    child: Text(
+                      "Login",
+                      style:
+                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: TextFormField(
+                      controller: uname_controller,
+                      validator: (username) {
+                        if (username!.isEmpty) {
+                          return "Name is required";
+                        } else
+                          return null;
+                      },
+                      textInputAction: TextInputAction.next,
+                      decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.account_circle),
+                          labelText: "Username",
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)))),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: TextFormField(
+                      controller: pass_controller,
+                      textInputAction: TextInputAction.next,
+                      obscureText: true,
+                      obscuringCharacter: '*',
+                      decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.lock),
+                          labelText: "Password",
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)))),
+                    ),
+                  ),
+                  ElevatedButton(
+                      style: ButtonStyle(
+                          minimumSize:
+                              MaterialStateProperty.all(const Size(330, 50)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ))),
+                      onPressed: () {
+                        final valid = formkey.currentState!.validate();
+                        if (valid) {
+                          LoginCheck(
+                              uname_controller.text, pass_controller.text);
+                        } else {}
+                      },
+                      child: Text(
+                        "Login",
+                        style: TextStyle(color: Colors.black),
+                      )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Not an User?.."),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignupPage()));
+                          },
+                          child: const Text(
+                            "Signup!!",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          )),
+                    ],
+                  )
+                ],
+              )),
+        ));
   }
 
-  void validateAndLogin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? storedUserName = prefs.getString('uname');
-    String? storedPassword = prefs.getString('pwd');
-
-    String enteredUserName = userName.text;
-    String enteredPassword = passWord.text;
-
-    if (storedUserName == enteredUserName &&
-        storedPassword == enteredPassword) {
-      // Successful login, set 'firstlogin' to false to indicate the user has registered
-      await prefs.setBool('firstlogin', false);
-
-      // Navigate to the home page
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomeShared()));
-    } else {
-      // Show an error message for login failure
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Login Failed'),
-          content: const Text('Invalid username or password. Please try again.'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      );
+  void LoginCheck(String name, String password) async {
+    var data = await SQLHelper.CheckLogin(name, password);
+    if (data.isNotEmpty) {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => HomeShared(data: data)));
+      print("Login Success");
+    } else if (data.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          action: SnackBarAction(label: 'UNDO', onPressed: () {}),
+          content: const Text('Invalid username / password')));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => SignupPage()));
+      print("Login Failed");
     }
   }
 }

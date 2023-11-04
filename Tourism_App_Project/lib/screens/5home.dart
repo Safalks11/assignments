@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tourism_app_project/screens/6details.dart';
 
-import '../data/dummydata.dart';
-
-// void main() {
-//   runApp(MaterialApp(
-//     home: HomeShared(),
-//     debugShowCheckedModeBanner: false,
-//     routes: {'details': (context) => DetailsPage()},
-//   ));
-// }
+import 'package:tourism_app_project/data/dummydata.dart';
 
 class HomeShared extends StatefulWidget {
-  const HomeShared({super.key});
+  const HomeShared({super.key, required List<Map> data});
 
   @override
   State<HomeShared> createState() => _HomeSharedState();
@@ -34,21 +24,6 @@ class _HomeSharedState extends State<HomeShared> {
     'Nature Look',
     'Favourite Place'
   ];
-  late SharedPreferences prefs;
-  String? user;
-
-  @override
-  void initState() {
-    super.initState();
-    fetchUser();
-  }
-
-  void fetchUser() async {
-    prefs = await SharedPreferences.getInstance();
-    setState(() {
-      user = prefs.getString('uname');
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,8 +121,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      // floating: true,
-      // pinned: true,
       backgroundColor: Colors.white,
       toolbarHeight: 80,
       centerTitle: true,
@@ -163,17 +136,18 @@ class _CustomAppBarState extends State<CustomAppBar> {
         Padding(
           padding: EdgeInsets.only(right: 8.0),
           child: CircleAvatar(
-            backgroundColor: Colors.redAccent,
+            backgroundColor: Colors.grey,
+            radius: 25,
           ),
         ),
       ],
-
       bottom: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.white,
         title: Container(
-          height: 40,
+          color: Colors.grey[300],
+          height: 45,
           width: double.infinity,
           child: TextField(
             decoration: InputDecoration(

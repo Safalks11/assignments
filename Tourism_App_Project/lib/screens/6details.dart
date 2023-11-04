@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourism_app_project/screens/7explorenow.dart';
 
 import '../data/dummydata.dart';
 
@@ -212,12 +213,12 @@ class DetailsPage extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
                   width: 375,
                   height: 200,
                   decoration: BoxDecoration(
@@ -226,8 +227,8 @@ class DetailsPage extends StatelessWidget {
                           fit: BoxFit.cover,
                           image: NetworkImage(detail['image']))),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           SizedBox(
             height: 14,
@@ -305,7 +306,11 @@ class DetailsPage extends StatelessWidget {
               Container(
                 width: 350,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            ExplorePage(image: detail['image'])));
+                  },
                   child: Text('Explore Now'),
                 ),
               )
