@@ -27,7 +27,6 @@ class Products_Home extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.grey[800],
-      body: ,
     );
   }
 }

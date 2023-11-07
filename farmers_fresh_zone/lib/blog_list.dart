@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class BlogList extends StatelessWidget {
   var blogs = [
-    'https://plus.unsplash.com/premium_photo-1673953509975-576678fa6710?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZG9jdG9yfGVufDB8fDB8fHww',
-    'https://images.unsplash.com/photo-1609766456145-f0332168845a?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhlYWx0aHxlbnwwfHwwfHx8MA%3D%3D'
+    'assets/images/blog1.jpg',
+    'assets/images/blog2.jpg',
+    'assets/images/blog3.jpg'
   ];
   var posts = [
     'Five reasons why Broccoli shou..',
@@ -28,7 +28,7 @@ class BlogList extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 195,
+            height: 201,
             child: CarouselSlider(
               items: List.generate(
                 blogs.length,
@@ -42,7 +42,7 @@ class BlogList extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
                           image: DecorationImage(
-                            image: NetworkImage(blogs[index]),
+                            image: AssetImage(blogs[index]),
                             fit: BoxFit.cover,
                           ),
                         ),

@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(
-                      'https://res.cloudinary.com/farmersfreshzone/image/upload/v1698740751/banner/snsz22u3jcvkgf9rerge.jpg',
+                      'https://res.cloudinary.com/farmersfreshzone/image/upload/v1697711207/banner/jrfzvbw3jlstr1x2edwx.jpg',
                     ),
                     fit: BoxFit.fill,
                   ),

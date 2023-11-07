@@ -8,7 +8,6 @@ class CarouselSliderWidget extends StatefulWidget {
 
 class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
   final List<String> ads = [
-    'https://res.cloudinary.com/farmersfreshzone/image/upload/v1698740751/banner/snsz22u3jcvkgf9rerge.jpg',
     'https://res.cloudinary.com/farmersfreshzone/image/upload/v1697618692/banner/z8laxsptxhs9dbdaox0h.jpg',
     'https://res.cloudinary.com/farmersfreshzone/image/upload/v1697711207/banner/jrfzvbw3jlstr1x2edwx.jpg',
     'https://res.cloudinary.com/farmersfreshzone/image/upload/v1697874885/banner/jz1vacuvqyxfpo0k8li9.jpg',
