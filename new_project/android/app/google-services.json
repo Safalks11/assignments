@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "198780608727",
+    "project_id": "firestoragee-3f876",
+    "storage_bucket": "firestoragee-3f876.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198780608727:android:c338f69b3442133cc2d092",
+        "android_client_info": {
+          "package_name": "com.example.new_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaYwUYxzSFhsBeQ6WiHImqlyg65C2K4F0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

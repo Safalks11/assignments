@@ -12,31 +12,29 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Spacer(),
-              Image(
-                image: AssetImage("assets/icons/GooglePay_Logo.png"),
-                width: 120,
-                height: 120,
-              ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(
-                    "Google",
-                    style: GoogleFonts.roboto(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Spacer(),
+            Image(
+              image: AssetImage("assets/icons/GooglePay_Logo.png"),
+              width: 120,
+              height: 120,
+            ),
+            Expanded(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Text(
+                  "Google",
+                  style: GoogleFonts.roboto(
+                    color: Colors.white,
+                    fontSize: 30,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

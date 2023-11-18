@@ -36,8 +36,8 @@ class LoginSignup extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const LoginPage()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Login_hive()));
                   },
                   child: const Row(
                     children: [
@@ -109,7 +109,7 @@ class LoginSignup extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SignupPage()));
+                              builder: (context) => Hive_Reg()));
                     },
                     child: const Text(
                       "Signup!!",

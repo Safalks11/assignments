@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import 'package:tourism_app_project/data/dummydata.dart';
 
 class HomeShared extends StatefulWidget {
-  const HomeShared({super.key, required List<Map> data});
+  const HomeShared({
+    super.key,
+    required List<Map> data,
+  });
 
   @override
   State<HomeShared> createState() => _HomeSharedState();
@@ -125,9 +129,16 @@ class _CustomAppBarState extends State<CustomAppBar> {
       backgroundColor: Colors.white,
       toolbarHeight: 80,
       centerTitle: true,
-      title: Text(
-        'Yaatra.com',
-        style: GoogleFonts.lilitaOne(color: Colors.black, fontSize: 30),
+      title: GradientText(
+        "Yaatra.com",
+        style: GoogleFonts.lilitaOne(fontSize: 32),
+        gradientType: GradientType.linear,
+        colors: [
+          Colors.green,
+          Colors.green.shade800,
+          Colors.black87,
+          Colors.green
+        ],
       ),
       leading: const Icon(
         Icons.menu,
@@ -137,21 +148,23 @@ class _CustomAppBarState extends State<CustomAppBar> {
         Padding(
           padding: EdgeInsets.only(right: 8.0),
           child: CircleAvatar(
-            backgroundColor: Colors.grey,
+            backgroundImage: AssetImage("assets/images/profile.jpg"),
             radius: 25,
           ),
         ),
       ],
       bottom: AppBar(
+        toolbarHeight: 70,
         automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Container(
-          color: Colors.grey[300],
+        title: const SizedBox(
           height: 45,
           width: double.infinity,
-          child: const TextField(
+          child: TextField(
             decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.lightGreen,
                 border: OutlineInputBorder(),
                 hintText: "Search",
                 suffixIcon: Icon(Icons.search)),

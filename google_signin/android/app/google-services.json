@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "198780608727",
+    "project_id": "firestoragee-3f876",
+    "storage_bucket": "firestoragee-3f876.appspot.com"
+  },
+  "client": [
+
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198780608727:android:04dd494a6fb3e695c2d092",
+        "android_client_info": {
+          "package_name": "com.safal.google_signin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198780608727-iro0h7u8kei4gh55cli1q50fceliv50m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.safal.google_signin",
+            "certificate_hash": "663132c32a51e0b1906b32438638b5c673a088cf"
+          }
+        },
+        {
+          "client_id": "198780608727-dhhhldahtg5fbvs2mehunvudpegfus80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaYwUYxzSFhsBeQ6WiHImqlyg65C2K4F0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198780608727-dhhhldahtg5fbvs2mehunvudpegfus80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

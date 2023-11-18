@@ -1,200 +1,104 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../db/sql_functions.dart';
-import '3login.dart';
+import '../db/hivedb.dart';
+import '../model/users.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
-
-  @override
-  State<SignupPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<SignupPage> {
-  var formkey1 = GlobalKey<FormState>();
-  final uname_controller = TextEditingController();
+class Hive_Reg extends StatelessWidget {
+  Hive_Reg({super.key});
+  final name_controller = TextEditingController();
   final email_controller = TextEditingController();
   final pass_controller = TextEditingController();
-  final cpass_controller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    void Addnewuser(String name, String email, String password) async {
-      int id = await SQLHelper.AddNewUser(name, email, password);
-      if (id != null) {
-        /// if registration is success goto login page
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const LoginPage()));
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Registration not Successful')));
-      }
-    }
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Signup Page'),
+        title: Text("Registration Page"),
       ),
-      body: SingleChildScrollView(
-        child: Form(
-          key: formkey1,
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 100.0),
-                child: Text(
-                  "Sign up",
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(
-                  "create an Account,Its free",
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: TextFormField(
-                  controller: uname_controller,
-                  validator: (username) {
-                    if (username!.isEmpty) {
-                      return "Name is required";
-                    } else {
-                      return null;
-                    }
-                  },
-                  textInputAction: TextInputAction.next,
-                  decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.account_circle),
-                      labelText: "Username",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(5)))),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: TextFormField(
-                  controller: email_controller,
-                  validator: (email) {
-                    if (email!.isEmpty ||
-                        !email.contains("@") ||
-                        !email.contains(".")) {
-                      return "Enter valid email";
-                    } else {
-                      return null;
-                    }
-                  },
-                  textInputAction: TextInputAction.next,
-                  decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.email),
-                      labelText: "Email",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(5)))),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: TextFormField(
-                  validator: (pass1) {
-                    if (pass1!.isEmpty || pass1.length < 6) {
-                      return "Password must should be greater than 6";
-                    } else {
-                      return null;
-                    }
-                  },
-                  textInputAction: TextInputAction.next,
-                  controller: pass_controller,
-                  obscureText: true,
-                  obscuringCharacter: '*',
-                  decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
-                      labelText: "Password",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(5)))),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: TextFormField(
-                  validator: (pass1) {
-                    if (pass1!.isEmpty || pass1.length < 6) {
-                      return "Password must should be greater than 6";
-                    } else if (pass_controller.text != cpass_controller.text) {
-                      return "Password not matched";
-                    } else {
-                      return null;
-                    }
-                  },
-                  controller: cpass_controller,
-                  obscureText: true,
-                  obscuringCharacter: '*',
-                  decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
-                      labelText: "Confirm Password",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(5)))),
-                ),
-              ),
-              ElevatedButton(
-                  style: ButtonStyle(
-                      minimumSize:
-                          MaterialStateProperty.all(const Size(330, 50)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ))),
-                  onPressed: () async {
-                    final valid1 = formkey1.currentState!.validate();
-                    if (valid1) {
-                      /// if form state is valid data from the textfield will upload to db
-                      var data = await SQLHelper.userFound(
-                          uname_controller.text, email_controller.text);
-
-                      if (data.isNotEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('User already exist')));
-                      } else {
-                        Addnewuser(uname_controller.text, email_controller.text,
-                            pass_controller.text);
-                      }
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          action:
-                              SnackBarAction(label: 'UNDO', onPressed: () {}),
-                          content: const Text('Invalid username / password')));
-                    }
-                  },
-                  child: const Text(
-                    "Sign Up",
-                    style: TextStyle(color: Colors.black),
-                  )),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Alredy have an account?"),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginPage()));
-                      },
-                      child: const Text(
-                        "Login!!",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      )),
-                ],
-              )
-            ],
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Registration Page"),
+            SizedBox(height: 15),
+            TextField(
+              controller: name_controller,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), hintText: "Name"),
+            ),
+            SizedBox(height: 15),
+            TextField(
+              controller: email_controller,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), hintText: "User Name"),
+            ),
+            SizedBox(height: 15),
+            TextField(
+              controller: pass_controller,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), hintText: "Password"),
+            ),
+            SizedBox(height: 15),
+            MaterialButton(
+              onPressed: () async {
+                final userList = await HiveDB.instance.getUsers();
+                validateSignup(userList);
+                name_controller.clear();
+                email_controller.clear();
+                pass_controller.clear();
+              },
+              shape: StadiumBorder(),
+              color: Colors.pink,
+              child: Text("Register Now"),
+            )
+          ],
         ),
       ),
     );
+  }
+
+  void validateSignup(List<Users> userList) async {
+    final name = name_controller.text;
+    final email = email_controller.text;
+    final pswrd = pass_controller.text;
+
+    bool userExist = false;
+    final validateEmail = EmailValidator.validate(email);
+    if (name != "" && email != "" && pswrd != "") {
+      if (validateEmail == true) {
+        await Future.forEach(userList, (user) {
+          if (user.email == email) {
+            userExist = true;
+          } else {
+            userExist = false;
+          }
+        });
+        if (userExist == true) {
+          Get.snackbar("Error", "User Already Exists");
+        } else {
+          final validatePassword = checkPassword(pswrd);
+          if (validatePassword == true) {
+            final user = Users(email: email, password: pswrd, name: name);
+            await HiveDB.instance.addUser(user);
+            Get.back();
+            Get.snackbar("Success", "User Registration Success!!");
+          }
+        }
+      } else {
+        Get.snackbar("Error", "Enter a valid email");
+      }
+    } else {
+      Get.snackbar("Error", "Please fill all the fields");
+    }
+  }
+
+  bool checkPassword(String pswrd) {
+    if (pswrd.length < 6) {
+      Get.snackbar("Error", "Password length must be > 6");
+      return false;
+    } else {
+      return true;
+    }
   }
 }

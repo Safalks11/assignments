@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "332689352022",
+    "project_id": "flutter-luminar",
+    "storage_bucket": "flutter-luminar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332689352022:android:c72cba510656a95c53e2f7",
+        "android_client_info": {
+          "package_name": "com.safal.music_player"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Paa3wsHaouNODWjr6bxrUVDWnZlAs8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,33 +1,39 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:hive_flutter/adapters.dart';
+import '../model/users.dart';
 import '2login_signup.dart';
-import '6details.dart'; // Ensure you import your login_signup file correctly.
+import '6details.dart';
 
-void main() {
-  runApp(MaterialApp(
-      home: const IntroScreen(),
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox<Users>('users');
+  Hive.registerAdapter(UsersAdapter());
+  runApp(GetMaterialApp(
+      home: IntroScreen(),
       debugShowCheckedModeBanner: false,
       routes: {'details': (context) => DetailsPage()}));
 }
 
 class IntroScreen extends StatefulWidget {
-  const IntroScreen({Key? key}) : super(key: key); // Corrected the constructor.
+  IntroScreen({Key? key}) : super(key: key);
 
   @override
   _IntroScreenState createState() => _IntroScreenState();
 }
 
 class _IntroScreenState extends State<IntroScreen> {
+  final email_controller = TextEditingController();
+  final pass_controller = TextEditingController();
   @override
   void initState() {
-    // Corrected the method name.
     super.initState();
 
-    Timer(const Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 6), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-            builder: (context) =>
-                const LoginSignup()), // Corrected the class name.
+        MaterialPageRoute(builder: (context) => const LoginSignup()),
       );
     });
   }
