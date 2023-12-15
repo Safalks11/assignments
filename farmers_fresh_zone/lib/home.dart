@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'app_bar.dart';
 import 'blog_list.dart';
 import 'bottom_bar.dart';
@@ -8,23 +7,6 @@ import 'filter_list.dart';
 import 'item_grid.dart';
 import 'items_list.dart';
 import 'specifications.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const HomePage(),
-      theme: ThemeData(primarySwatch: Colors.green),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

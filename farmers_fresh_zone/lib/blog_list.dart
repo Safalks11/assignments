@@ -37,7 +37,7 @@ class BlogList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.width / 4,
+                        height: MediaQuery.of(context).size.width / 3.5,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
@@ -55,7 +55,7 @@ class BlogList extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             fontSize: 11,
                           ),
-                          maxLines: 2,
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),

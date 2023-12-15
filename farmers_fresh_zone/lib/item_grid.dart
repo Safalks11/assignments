@@ -77,17 +77,12 @@ class ItemsGrid extends StatelessWidget {
               );
             },
           ),
-          Container(
-            height: 175,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                  'https://scontent-del1-1.xx.fbcdn.net/v/t1.6435-9/101189854_3883116585073473_5815209680959438848_n.png?_nc_cat=109&ccb=1-7&_nc_sid=300f58&_nc_ohc=8UvhktDBJTwAX9V4NSS&_nc_ht=scontent-del1-1.xx&oh=00_AfCAc4mIFKVQY380Bgy_tF-NIIiHM04ciNzwJGMGCgExsA&oe=655F8D49',
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
+          SizedBox(height: 10),
+          SizedBox(
+            child: Image.network(
+                "https://farmersfz.com/assets/v4/assets/farmer_to_plate_v2.jpg"),
           ),
+          SizedBox(height: 10),
         ],
       ),
     );

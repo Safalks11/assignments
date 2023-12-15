@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../db/hivedb.dart';
 import '../model/users.dart';
@@ -14,30 +15,44 @@ class Hive_Reg extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
         title: Text("Registration Page"),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Registration Page"),
-            SizedBox(height: 15),
-            TextField(
-              controller: name_controller,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: "Name"),
+            Text(
+              "Register Here!!",
+              style: GoogleFonts.dancingScript(
+                  fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 15),
-            TextField(
-              controller: email_controller,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: "User Name"),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: TextField(
+                controller: name_controller,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: "Name"),
+              ),
             ),
             SizedBox(height: 15),
-            TextField(
-              controller: pass_controller,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: "Password"),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: TextField(
+                controller: email_controller,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: "User Name"),
+              ),
+            ),
+            SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: TextField(
+                controller: pass_controller,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: "Password"),
+              ),
             ),
             SizedBox(height: 15),
             MaterialButton(
@@ -49,8 +64,11 @@ class Hive_Reg extends StatelessWidget {
                 pass_controller.clear();
               },
               shape: StadiumBorder(),
-              color: Colors.pink,
-              child: Text("Register Now"),
+              color: Colors.red,
+              child: Text(
+                "Register Now",
+                style: GoogleFonts.k2d(),
+              ),
             )
           ],
         ),

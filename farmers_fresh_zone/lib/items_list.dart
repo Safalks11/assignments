@@ -108,7 +108,7 @@ class _ItemsListState extends State<ItemsList> {
                           borderRadius: BorderRadius.circular(4),
                           image: DecorationImage(
                             image: AssetImage(items[index]),
-                            fit: BoxFit.contain,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),

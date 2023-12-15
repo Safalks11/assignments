@@ -164,7 +164,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           child: TextField(
             decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.lightGreen,
+                fillColor: Colors.black12,
                 border: OutlineInputBorder(),
                 hintText: "Search",
                 suffixIcon: Icon(Icons.search)),

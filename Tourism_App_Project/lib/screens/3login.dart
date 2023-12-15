@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tourism_app_project/screens/5home.dart';
 
 import '../db/hivedb.dart';
@@ -21,18 +22,30 @@ class Login_hive extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Login Page"),
-            SizedBox(height: 15),
-            TextField(
-              controller: email_controller,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: "User Name"),
+            Text(
+              "Login Here!!",
+              style: GoogleFonts.dancingScript(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
             ),
             SizedBox(height: 15),
-            TextField(
-              controller: pass_controller,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: "Password"),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: TextField(
+                controller: email_controller,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: "User Name"),
+              ),
+            ),
+            SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: TextField(
+                controller: pass_controller,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), labelText: "Password"),
+              ),
             ),
             SizedBox(height: 15),
             MaterialButton(
@@ -41,8 +54,11 @@ class Login_hive extends StatelessWidget {
                 validateLogin(users);
               },
               shape: StadiumBorder(),
-              color: Colors.pink,
-              child: Text("Login Here"),
+              color: Colors.green,
+              child: Text(
+                "Login Here",
+                style: GoogleFonts.k2d(),
+              ),
             ),
             TextButton(
                 onPressed: () {
